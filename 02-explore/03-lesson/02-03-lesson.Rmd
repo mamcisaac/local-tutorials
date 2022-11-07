@@ -7,7 +7,7 @@ output:
 runtime: shiny_prerendered
 ---
 
-```{r setup, message = FALSE, warning = FALSE,	include = FALSE}
+```{r setup, message = FALSE, warning = FALSE,	include =  FALSE}
 if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
 pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges)
 pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash", "jennybc/gapminder")

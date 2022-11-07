@@ -9,7 +9,7 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
-pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman, NHANES, janitor, mosaicData, MASS)
+pacman::p_load(MASS, openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gapminder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman, NHANES, janitor, mosaicData)
 pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
 
 options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 # From http://www.rossmanchance.com/iscam2/data/movies03.txt
 hypdata_nonequalvar <- read_delim("data/movies03.txt", "\t") %>%
-  select(response = box.office, explanatory = score)
+  dplyr::select(response = box.office, explanatory = score)
 
 set.seed(47474)
 explanatory <- rnorm(500)
@@ -851,7 +851,7 @@ hypdata_out <-  data.frame(explanatory, response)
 obs_slope_out <- lm(response ~ explanatory, hypdata_out) %>%
   tidy() %>%
   filter(term == "explanatory") %>%
-  select(estimate) %>%
+  dplyr::select(estimate) %>%
   pull() 
 
 hypdata_noout <- hypdata_out %>% filter(explanatory < 4.6) 
@@ -859,7 +859,7 @@ hypdata_noout <- hypdata_out %>% filter(explanatory < 4.6)
 obs_slope_noout <- lm(response ~ explanatory, hypdata_noout) %>%
   tidy() %>%
   filter(term == "explanatory") %>%
-  select(estimate) %>%
+  dplyr::select(estimate) %>%
   pull() 
 
 set.seed(4747)

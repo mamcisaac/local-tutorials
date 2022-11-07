@@ -9,13 +9,16 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 # load packages ----------------------------------------------------------------
-library(learnr)
-library(openintro)
-library(broom)
-library(knitr)
-library(tidyverse)
-library(infer)
-library(emo)
+
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman, NHANES, janitor)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
+
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 # knitr options ----------------------------------------------------------------
 
@@ -505,17 +508,17 @@ boot_dist_consci
 
 Next, let's visualize the bootstrap distribution you constructed earlier, `boot_dist_consci`, in a density plot using `geom_density()`.
 
-```{r ex6, exercise=TRUE}
+```{r tut0501ex6, exercise=TRUE}
 ggplot(boot_dist_consci, aes(x = ___)) +
   ___
 ```
 
-```{r ex6-hint, exercise=TRUE}
+```{r tut0501ex6-hint, exercise=TRUE}
 ggplot(boot_dist_consci, aes(x = ___)) +
   geom_density()
 ```
 
-```{r ex6-solution}
+```{r tut0501ex6-solution}
 ggplot(boot_dist_consci, aes(x = stat)) +
   geom_density()
 ```
@@ -1332,6 +1335,25 @@ question(
   answer("In traditional surveys and scientific research, the bootstrap approach is more commonly used than the approximation approach.")
 )
 ```
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
+```
+
 
 ## Congratulations!
 

@@ -10,12 +10,15 @@ runtime: shiny_prerendered
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 # load packages ----------------------------------------------------------------
 
-library(learnr)
-library(tidyverse)
-library(openintro)
-library(grid)
-library(broom)
-library(emo)
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
+
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 # knitr options ----------------------------------------------------------------
 
@@ -371,22 +374,22 @@ hgt_wgt_mod <- lm(wgt ~ hgt, data = bdims)
 
 Next, compute the mean of the residuals of `hgt_wgt_mod` and check if it is equal to 0.
 
-```{r ex4-setup}
+```{r tut0304ex4-setup}
 hgt_wgt_mod <- lm(wgt ~ hgt, data = bdims)
 ```
 
-```{r ex4, exercise = TRUE}
+```{r tut0304ex4, exercise = TRUE}
 # Mean of weights equal to mean of fitted values?
 all.equal(___, ___) 
 # Mean of the residuals
 ___(residuals(___))
 ```
 
-```{r ex4-hint-1}
+```{r tut0304ex4-hint-1}
 all.equal(mean(bdims$wgt), mean(fitted.values(hgt_wgt_mod))) 
 ```
 
-```{r ex4-solution}
+```{r tut0304ex4-solution}
 # Mean of weights equal to mean of fitted values?
 all.equal(mean(bdims$wgt), mean(fitted.values(hgt_wgt_mod)))
 # Mean of the residuals
@@ -572,6 +575,24 @@ ggplot(data = bdims, aes(x = hgt, y = wgt)) +
   geom_abline(data = hgt_wgt_coefs, 
               aes(intercept = `(Intercept)`, slope = hgt),  
               color = "dodgerblue")
+```
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
 ```
 
 

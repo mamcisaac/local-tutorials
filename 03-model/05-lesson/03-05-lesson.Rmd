@@ -10,12 +10,15 @@ runtime: shiny_prerendered
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 # load packages ----------------------------------------------------------------
 
-library(learnr)
-library(broom)
-library(tidyverse)
-library(openintro)
-library(Lahman)
-library(emo)
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
+
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 # knitr options ----------------------------------------------------------------
 
@@ -514,16 +517,16 @@ Influential points are likely to have high leverage and deviate from the general
 
 Use `augment()` and `slice_max()` to list the top 6 observations by their Cook's distance (`.cooksd`).
 
-```{r ex6, exercise = TRUE}
+```{r tut0305ex6, exercise = TRUE}
 # Rank influential points
 
 ```
 
-<div id="ex6-hint">
+<div id="tut0305ex6-hint">
 **Hint:** Take a peek at the previous exercise, and note that this time we want to arrange the output by `.cooksd` this time!
 </div>
 
-```{r ex6-solution}
+```{r tut0305ex6-solution}
 # Rank influential points
 mod_slg_obp %>%
   augment() %>%
@@ -717,6 +720,24 @@ summary(mod_cleaner)
 
 summary(mod_original)
 
+```
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
 ```
 
 

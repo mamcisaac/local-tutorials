@@ -10,12 +10,15 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 # load packages ----------------------------------------------------------------
 
-library(learnr)
-library(kableExtra)
-library(tidyverse)
-library(infer)
-library(openintro)
-library(emo)
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman, NHANES, janitor)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
+
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 # knitr options ----------------------------------------------------------------
 
@@ -1291,6 +1294,25 @@ Using measures of variability of the statistic, we can estimate how far $\hat{p}
 ![](images/lesson4_img10.png){ width=80% }
 
 As with hypothesis testing, the entire bootstrap process will be repeated with different data structures and research questions in later tutorials.
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
+```
+
 
     
 ## Congratulations!

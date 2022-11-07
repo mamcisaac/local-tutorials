@@ -8,14 +8,15 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, message = FALSE, warning = FALSE,	include = FALSE}
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash", "jennybc/gapminder")
 
-library(learnr)
-library(tidyverse)
-library(openintro)
-library(gapminder)
-library(gt)
-library(patchwork)
-library(emo)
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 knitr::opts_chunk$set(warning = FALSE,
                       message = FALSE,
@@ -300,7 +301,7 @@ For this exercise, focus on how the life expectancy differs from continent to co
 - Using `gap2007`, calculate the mean and median life expectancy for each continent. Don't worry about naming the new columns produced by `summarize()`.
 - Confirm the trends that you see in the medians by generating side-by-side boxplots of life expectancy for each continent.
 
-```{r ex1, exercise = TRUE}
+```{r tut0203ex1, exercise = TRUE}
 # Create dataset of 2007 data
 gap2007 <- filter(___, ___)
 
@@ -316,13 +317,13 @@ gap2007 %>%
   ___
 ```
 
-```{r ex1-hint-1} 
+```{r tut0203ex1-hint-1} 
 ## The first step is to filter the gapminder to only have the year 2007
 gap2007 <- filter(gapminder, 
                   year == 2007)
 ```
 
-```{r ex1-hint-2} 
+```{r tut0203ex1-hint-2} 
 ## Next we need to:
 ## 1. Use the gap2007 data 
 ## 2. Make groups based on the continent of the country
@@ -333,7 +334,7 @@ gap2007 %>%
             median(lifeExp))
 ```
 
-```{r ex1-hint-3} 
+```{r tut0203ex1-hint-3} 
 ## Finally we need to:
 ## 1. Use the gap2007 data 
 ## 2. Declare our x and y variables 
@@ -344,7 +345,7 @@ gap2007 %>%
 ```
 
 
-```{r ex1-solution}
+```{r tut0203ex1-solution}
 # Create dataset of 2007 data
 gap2007 <- filter(gapminder, year == 2007)
 
@@ -1017,6 +1018,25 @@ gap2007 %>%
   ggplot(aes(x = lifeExp)) +
   geom_boxplot()
 ```
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
+```
+
 
 ## Congratulations!
 

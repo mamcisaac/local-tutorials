@@ -8,14 +8,15 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library(learnr)
-library(openintro)
-library(broom)
-library(knitr)
-library(infer)
-library(tidyverse)
-library(GGally)
-library(emo)
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman, NHANES, janitor, mosaicData, MASS)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
+
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
@@ -610,6 +611,25 @@ As seen in other courses, linear regression is a modeling technique. And the mod
 As with the other inferential methods covered in this course sequence, the inferential analysis of a linear model can be approached as a hypothesis test or a confidence interval. The mathematical model provides one framework for the analysis and computational modeling (that is, randomization tests and bootstrapping) give an alternative way of producing inferential analyses.
 
 All are valid methods to use, and you should feel comfortable at this point using all of them.
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
+```
+
 
 ## Congratulations!
 

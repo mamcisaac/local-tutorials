@@ -9,14 +9,16 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 # load packages ----------------------------------------------------------------
-library(learnr)
-library(openintro)
-library(broom)
-library(knitr)
-library(tidyverse)
-library(gapminder)
-library(infer)
-library(emo)
+
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges, Lahman, NHANES, janitor)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
+
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 
 # knitr options ----------------------------------------------------------------
 
@@ -196,7 +198,7 @@ totals
 - Inspect the resulting data frame to understand its structure.
 
 
-```{r ex2, exercise=TRUE}
+```{r tut0504ex2, exercise=TRUE}
 # From previous step
 totals <- iran %>%
   summarize(ahmadinejad = sum(ahmadinejad),
@@ -212,11 +214,11 @@ gathered_totals <- totals %>%
 gathered_totals
 ```
 
-<div id="ex2-hint">
+<div id="tut0504ex2-hint">
 **Hint:** Set `key = "candidate"` and `value = "votes"`.
 </div>
 
-```{r ex2-solution}
+```{r tut0504ex2-solution}
 # From previous step
 totals <- iran %>%
   summarize(ahmadinejad = sum(ahmadinejad),
@@ -1596,6 +1598,23 @@ knitr::include_graphics("images/4-4-15.png")
 
 The final step is to simply assess the distribution of these null statistics and see if the statistic that you actually observed is consistent or inconsistent with it.
 
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
+```
 
 
 ## Congratulations!

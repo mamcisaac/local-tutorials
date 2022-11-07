@@ -9,11 +9,15 @@ runtime: shiny_prerendered
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 
-library(learnr)
-library(tidyverse)
-library(openintro)
-library(emo)
+if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-project.org")
+pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gampinder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt, cowplot, patchwork, ggridges)
+pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
 
+options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
+get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
+get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
+remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
+))
 knitr::opts_chunk$set(echo = FALSE, 
                       fig.align = "center", 
                       fig.height = 3, 
@@ -825,6 +829,25 @@ noise_summary %>%
 noise_summary %>%
   filter(abs(spurious_cor) > 0.2)
 ```
+
+
+## Submit
+
+Enter your student ID and run the "code":
+
+```{r student_id, exercise=TRUE}
+0XXXXXX
+```
+
+
+```{r context="server"}
+learnrhash::encoder_logic(strip_output = TRUE)
+```
+
+```{r encode, echo=FALSE}
+learnrhash::encoder_ui(ui_before = default_ui(url="https://forms.gle/5RjAsxDmxjWr8euv9"))
+```
+
 
 ## Congratulations!
 

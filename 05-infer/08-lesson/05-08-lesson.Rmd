@@ -542,7 +542,6 @@ null_dist <- gss %>%
   hypothesize(null = "___") %>% 
   generate(reps = 1000, type = "permute") %>% 
   calculate(stat = "___")
-
 ```
 
 ```{r anova-sim-hint-1}
@@ -555,6 +554,15 @@ hypothesise(null = "independence")
 
 ```{r anova-sim-hint-3}
 calculate(stat = "F")
+```
+
+```{r anova-sim-solution, exercise = TRUE}
+null_dist <- gss %>% 
+  specify(wordsum ~ class)  %>% 
+  hypothesise(null = "independence") %>% 
+  generate(reps = 1000, type = "permute") %>% 
+  calculate(stat = "F")
+null_dist
 ```
 
 ###
@@ -668,16 +676,15 @@ For this exercise, you are to conduct a pairwise t-test on vocabulary scores and
 
 ```{r vocabulary_5, exercise=TRUE}
 # Run a pairwise t-test on wordsum and class, without adjustment
-t_test_results <- gss %$%  
-  pairwise.t.test(x = ___, g = ___, p.adjust.method = "___")
+t_test_results <- 
+  pairwise.t.test(x = gss$___, g = gss$___, p.adjust.method = "___")
 
 
 # Tidy the result
 tidy(___)
 
 ## Compare with un-adjusted pairwise t-tests
-gss %$% 
-  pairwise.t.test(wordsum, class, p.adjust.method = "none")
+pairwise.t.test(gss$wordsum, gss$class, p.adjust.method = "none")
 ```
 
 ```{r vocabulary_5-hint}
@@ -688,20 +695,14 @@ gss %$%
 
 ```{r vocabulary_5-solution}
 # Run a pairwise t-test on wordsum and class, without adjustment
-t_test_results <- gss %$%  
-  pairwise.t.test(x = wordsum, g = class, p.adjust.method = "bonferroni")
-
-## Alternative method 
-t_test_results <- pairwise.t.test(gss$wordsum, gss$class, p.adjust.method = "bonferroni")
+t_test_results <- pairwise.t.test(x = gss$wordsum, g = gss$class, p.adjust.method = "bonferroni")
 
 # Tidy the result
-tidy(___)
+tidy(t_test_results)
 
 ## Compare with un-adjusted pairwise t-tests
-gss %$% 
-  pairwise.t.test(wordsum, class, p.adjust.method = "none") %>% 
+  pairwise.t.test(gss$wordsum, gss$class, p.adjust.method = "none") %>% 
   tidy()
-
 ```
 
 ### 

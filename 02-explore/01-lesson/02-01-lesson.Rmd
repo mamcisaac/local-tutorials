@@ -12,11 +12,6 @@ if(!require("pacman")) install.packages("pacman",repos = "http://cran.us.r-proje
 pacman::p_load(openintro, skimr, GGally, infer, tidyverse, statsr, broom, learnr, cachem, gapminder, usdata, knitr, gridExtra, png, gtable, stringr, grid, kableExtra, gt)
 pacman::p_load_gh("hadley/emo", "monicathieu/learnrhash")
 
-options(tutorial.storage = list( save_object = function(tutorial_id, tutorial_version, user_id, object_id, data) {},
-get_object = function(tutorial_id, tutorial_version, user_id, object_id) {NULL},
-get_objects = function(tutorial_id, tutorial_version, user_id) {list()},
-remove_all_objects = function(tutorial_id, tutorial_version, user_id) {}
-))
 
 knitr::opts_chunk$set(warning = FALSE,
                       message = FALSE,
@@ -305,7 +300,7 @@ comics_filtered %>%
 
 ```
 
-```{r hsb2-mutate-num-char-cat-hint}
+```{r ex2-hint}
 Remember, to filter out observations, the not equal to (`!=`) comparison comes in handy!
 ```
 
@@ -649,9 +644,8 @@ ggplot(comics, aes(x = ___, fill = ___)) +
   geom_bar(position = ___)
 ```
 
-```{r hsb2-mutate-num-char-cat-hint}
+```{r ex4-hint}
 The code for the second plot is the same as the first, except you'll provide a `position = "fill"` argument to `geom_bar()`.
-
 ```
 
 ```{r ex4-solution}
